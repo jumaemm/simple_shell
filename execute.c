@@ -7,13 +7,14 @@
  */
 void parser(char **tokens)
 {
-	char *command = NULL;
+	char *command = NULL, *path_command = NULL;
 
 	if (tokens)
 	{
 		command = tokens[0];
+		path_command = path_handler(command);
 
-		if (execve(command, tokens, NULL) == -1)
+		if (execve(path_command, tokens, NULL) == -1)
 		{
 			perror("Error: ");
 		}
