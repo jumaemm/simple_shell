@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	char *src = NULL;
 	/*int i;*/
 	char **tokens;
-	/*pid_t pid;*/
+	pid_t pid;
 
 	(void)argc;
 	(void)argv;
@@ -27,18 +27,24 @@ int main(int argc, char **argv)
 		count = getline(&src, &n, stdin);
 		if (count == -1)
 		{
-			printf("Exiting...");
+			printf("Exiting...\n");
 			return (-1);
 		}
-		/*printf("Memory allocated: %ld\n", count);*/
 		tokens = tokenizer(src, count);
-		/*for (i = 0; tokens[i]; i++)
-		*{
-		*	printf("Token[%d]: %s\n", i, tokens[i]);
-		*}
-		*/
-		parser(tokens);
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("Error");
+			return (-1);
+		}
+		if (pid == 0)
+		{
+			parser(tokens);
+		}
+		else
+			wait(NULL);
 	}
+	free(tokens);
 	free(src);
 	return (0);
 }
