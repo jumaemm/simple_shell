@@ -14,7 +14,6 @@ int main(int argc, char **argv)
 	char *src = NULL;
 	/*int i;*/
 	char **tokens;
-	pid_t pid;
 
 	(void)argc;
 	(void)argv;
@@ -31,18 +30,7 @@ int main(int argc, char **argv)
 			return (-1);
 		}
 		tokens = tokenizer(src, count);
-		pid = fork();
-		if (pid == -1)
-		{
-			perror("Error");
-			return (-1);
-		}
-		if (pid == 0)
-		{
-			parser(tokens);
-		}
-		else
-			wait(NULL);
+		parser(tokens);
 	}
 	free(src);
 	return (0);
