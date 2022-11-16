@@ -44,7 +44,6 @@ int main(int argc, char **argv)
 		else
 			wait(NULL);
 	}
-	free(tokens);
 	free(src);
 	return (0);
 }
