@@ -20,7 +20,7 @@ char **tokenizer(char *argv, ssize_t count)
 		perror("Memory allocation failed");
 		return (NULL);
 	}
-	strcpy(dest, argv);
+	_strcpy(dest, argv);
 	token = strtok(argv, delim);
 	while (token)
 	{
@@ -33,7 +33,7 @@ char **tokenizer(char *argv, ssize_t count)
 	for (i = 0; token; i++)
 	{
 		tokens[i] = malloc(sizeof(char) * strlen(token));
-		strcpy(tokens[i], token);
+		_strcpy(tokens[i], token);
 		token = strtok(NULL, delim);
 	}
 	free(dest);
