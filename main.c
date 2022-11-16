@@ -12,10 +12,12 @@ int main(int argc, char **argv)
 	size_t n = 0;
 	ssize_t count;
 	char *src = NULL;
-	int i;
+	/*int i;*/
 	char **tokens;
 	/*pid_t pid;*/
 
+	(void)argc;
+	(void)argv;
 	while (1)
 	{
 		src = malloc(sizeof(char) * n);
@@ -28,12 +30,13 @@ int main(int argc, char **argv)
 			printf("Exiting...");
 			return (-1);
 		}
-		printf("Memory allocated: %ld\n", count);
+		/*printf("Memory allocated: %ld\n", count);*/
 		tokens = tokenizer(src, count);
-		for (i = 0; tokens[i]; i++)
-		{
-			printf("Token[%d]: %s\n", i, tokens[i]);
-		}
+		/*for (i = 0; tokens[i]; i++)
+		*{
+		*	printf("Token[%d]: %s\n", i, tokens[i]);
+		*}
+		*/
 		parser(tokens);
 	}
 	free(src);
