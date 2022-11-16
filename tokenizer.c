@@ -3,6 +3,7 @@
 /**
  * tokenizer - splits input string into tokens
  * @argv: input string
+ * @count: number of chars in argv
  * Return: array of tokens
  */
 char **tokenizer(char *argv, ssize_t count)
