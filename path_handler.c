@@ -15,16 +15,16 @@ char *path_handler(char *command)
 	if (path)
 	{
 		path_copy = strdup(path);
-		len_command = strlen(command);
+		len_command = _strlen(command);
 		path_token = strtok(path_copy, ":");
 		while (path_token)
 		{
-			len_directory = strlen(path_token);
+			len_directory = _strlen(path_token);
 			file_path = malloc(len_command + len_directory + 2);
-			strcpy(file_path, path_token);
-			strcat(file_path, "/");
-			strcat(file_path, command);
-			strcat(file_path, "\0");
+			_strcpy(file_path, path_token);
+			_strcat(file_path, "/");
+			_strcat(file_path, command);
+			_strcat(file_path, "\0");
 			if (stat(file_path, &buff) == 0)
 			{
 				free(path_copy);
