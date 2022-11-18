@@ -9,7 +9,7 @@ int parser(char **tokens)
 {
 	char *command = NULL, *path_command = NULL;
 	pid_t pid;
-	/*int status;*/
+	int status;
 
 	if (tokens)
 	{
@@ -37,11 +37,10 @@ int parser(char **tokens)
 		}
 		else
 		{
-		/*	do {
-		*		waitpid(pid, &status, WUNTRACED);
-		*	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-		*/
-			wait(NULL);
+			do {
+				waitpid(pid, &status, WUNTRACED);
+			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		/*	wait(NULL);*/
 		}
 	}
 	return (1);

@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-#define TOKEN_BUFSIZE 64
+#define TOKEN_BUFSIZE 128
 extern char **environ;
 
 int parser(char **tokens);
@@ -21,4 +21,5 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 void shell_loop(void);
 char *line_handler(void);
+char *path_concat(char *path_token, char *file_path, char *command);
 #endif

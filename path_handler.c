@@ -21,10 +21,12 @@ char *path_handler(char *command)
 		{
 			len_directory = _strlen(path_token);
 			file_path = malloc(len_command + len_directory + 2);
-			_strcpy(file_path, path_token);
-			_strcat(file_path, "/");
-			_strcat(file_path, command);
-			_strcat(file_path, "\0");
+			if (file_path == NULL)
+			{
+				perror("Error allocating memory");
+				exit(EXIT_FAILURE);
+			}
+			file_path = path_concat(path_token, file_path, command);
 			if (stat(file_path, &buff) == 0)
 			{
 				free(path_copy);
@@ -44,4 +46,20 @@ char *path_handler(char *command)
 		return (NULL);
 	}
 	return (NULL);
+}
+/**
+ * path_concat - concat tokens to path
+ * @path_token: path token
+ * @command: command
+ * @file_path: file path
+ * Return: concatenated path
+ */
+char *path_concat(char *path_token, char *file_path, char *command)
+{
+	(void)*_strcpy(file_path, path_token);
+	(void)*_strcat(file_path, "/");
+	(void)*_strcat(file_path, command);
+	(void)*_strcat(file_path, "\0");
+
+	return (file_path);
 }
