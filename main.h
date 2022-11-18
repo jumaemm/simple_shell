@@ -8,13 +8,17 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+
+#define TOKEN_BUFSIZE 64
 extern char **environ;
 
-void parser(char **tokens);
-char **tokenizer(char *argv, ssize_t count);
+int parser(char **tokens);
+char **tokenizer(char *argv);
 char *path_handler(char *command);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
+void shell_loop(void);
+char *line_handler(void);
 #endif
