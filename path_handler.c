@@ -56,10 +56,10 @@ char *path_handler(char *command)
  */
 char *path_concat(char *path_token, char *file_path, char *command)
 {
-	*_strcpy(file_path, path_token);
-	*_strcat(file_path, "/");
-	*_strcat(file_path, command);
-	*_strcat(file_path, "\0");
+	(void)*_strcpy(file_path, path_token);
+	(void)*_strcat(file_path, "/");
+	(void)*_strcat(file_path, command);
+	(void)*_strcat(file_path, "\0");
 
 	return (file_path);
 }
