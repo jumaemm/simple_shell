@@ -13,9 +13,11 @@ void shell_loop(void)
 	do {
 		write(STDOUT_FILENO, "$ ", 4);
 		line_input = line_handler();
-		argv = tokenizer(line_input);
-		status = parser(argv);
-
+		if (line_input)
+		{
+			argv = tokenizer(line_input);
+			status = parser(argv);
+		}
 		free(line_input);
 		free(argv);
 	} while (status);
