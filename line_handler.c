@@ -8,7 +8,9 @@ char *line_handler(void)
 {
 	char *input_line;
 	size_t bufsize = 0;
-	int status = getline(&input_line, &bufsize, stdin);
+	int status = 0;
+
+	status = getline(&input_line, &bufsize, stdin);
 
 	if (status == -1)
 	{
