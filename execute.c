@@ -29,7 +29,7 @@ int parser(char **tokens)
 		}
 		if (pid == 0)
 		{
-			if (execve(path_command, tokens, NULL) == -1)
+			if (execve(path_command, tokens, environ) == -1)
 			{
 				perror("Error: ");
 				return (0);
